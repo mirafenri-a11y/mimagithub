@@ -4,7 +4,7 @@
   "private": true,
   "description": "共創仲間診断 — 12問であなたの共創タイプを診断する静的Webアプリ",
   "scripts": {
-    "test": "node --test \"test/*.test.js\"",
+    "test": "node --test",
     "start": "python3 -m http.server 8000"
   }
 }
