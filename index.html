@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>共創仲間診断 | あなたはどんな共創タイプ？</title>
+<meta name="description" content="12の質問で、あなたの「共創タイプ」を8種類から診断します。仲間との相性チェック付き。">
+<meta property="og:title" content="共創仲間診断">
+<meta property="og:description" content="12の質問で、あなたの「共創タイプ」を8種類から診断します。">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤝</text></svg>">
+</head>
+<body>
+
+<div class="glow glow-a" aria-hidden="true"></div>
+<div class="glow glow-b" aria-hidden="true"></div>
+
+<main class="wrap">
+
+  <!-- ============ イントロ ============ -->
+  <section id="screen-intro" class="screen">
+    <p class="eyebrow">CO-CREATION PARTNER DIAGNOSIS</p>
+    <h1 class="title">共創仲間診断</h1>
+    <p class="lead">
+      いっしょに何かをつくるとき、人にはそれぞれ「持ち場」があります。<br>
+      12の質問で、あなたの共創タイプを8種類から診断します。
+    </p>
+
+    <ul class="axis-preview">
+      <li><span class="ax-label">起点</span><span class="ax-pair">構想 ⇄ 実装</span></li>
+      <li><span class="ax-label">推進</span><span class="ax-pair">牽引 ⇄ 調律</span></li>
+      <li><span class="ax-label">射程</span><span class="ax-pair">開放 ⇄ 深耕</span></li>
+    </ul>
+
+    <button id="btn-start" class="btn btn-primary btn-lg">診断をはじめる（約2分）</button>
+    <button id="btn-goto-compat" class="btn btn-ghost">タイプがわかっている人は「相性チェック」へ</button>
+
+    <p class="fineprint">回答はブラウザの中だけで処理されます。サーバーには何も送信されません。</p>
+  </section>
+
+  <!-- ============ 設問 ============ -->
+  <section id="screen-quiz" class="screen" hidden>
+    <div class="progress">
+      <div class="progress-bar"><span id="progress-fill"></span></div>
+      <p class="progress-text"><span id="q-index">1</span> / <span id="q-total">12</span></p>
+    </div>
+
+    <p id="q-text" class="q-text"></p>
+
+    <div id="q-choices" class="choices"></div>
+
+    <div class="quiz-nav">
+      <button id="btn-back" class="btn btn-ghost">← ひとつ戻る</button>
+    </div>
+  </section>
+
+  <!-- ============ 結果 ============ -->
+  <section id="screen-result" class="screen" hidden>
+    <div class="result-card">
+      <p class="eyebrow">YOUR TYPE</p>
+      <div class="type-head">
+        <span id="r-icon" class="type-icon"></span>
+        <div>
+          <h2 id="r-name" class="type-name"></h2>
+          <p id="r-reading" class="type-reading"></p>
+        </div>
+      </div>
+      <p id="r-tagline" class="type-tagline"></p>
+      <p id="r-summary" class="type-summary"></p>
+    </div>
+
+    <div class="bars" id="r-bars"></div>
+
+    <div class="cols">
+      <div class="panel panel-good">
+        <h3>強み</h3>
+        <ul id="r-strengths"></ul>
+      </div>
+      <div class="panel panel-warn">
+        <h3>陥りやすい罠</h3>
+        <ul id="r-traps"></ul>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3>チームでの持ち場</h3>
+      <p id="r-role" class="plain"></p>
+      <h3 class="mt">共創がうまくいくコツ</h3>
+      <ul id="r-tips"></ul>
+    </div>
+
+    <div class="panel">
+      <h3>相性のいい仲間</h3>
+      <div id="r-matches" class="matches"></div>
+    </div>
+
+    <div class="actions">
+      <button id="btn-share" class="btn btn-primary">結果のリンクをコピー</button>
+      <button id="btn-compat" class="btn btn-ghost">仲間との相性を見る</button>
+      <button id="btn-retry" class="btn btn-ghost">もう一度診断する</button>
+    </div>
+    <p id="share-note" class="fineprint" aria-live="polite"></p>
+  </section>
+
+  <!-- ============ 相性チェック ============ -->
+  <section id="screen-compat" class="screen" hidden>
+    <p class="eyebrow">COMPATIBILITY</p>
+    <h2 class="title sm">仲間との相性チェック</h2>
+    <p class="lead sm">ふたりのタイプを選ぶと、組んだときに何が起きるかを表示します。</p>
+
+    <div class="selects">
+      <label>あなた
+        <select id="sel-a"></select>
+      </label>
+      <span class="times">×</span>
+      <label>相手
+        <select id="sel-b"></select>
+      </label>
+    </div>
+
+    <div id="compat-out" class="compat-out"></div>
+
+    <div class="actions">
+      <button id="btn-compat-back" class="btn btn-ghost">← 戻る</button>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <p>共創仲間診断 — 8タイプ / 3軸 / 12問</p>
+  </footer>
+</main>
+
+<script src="assets/data.js"></script>
+<script src="assets/logic.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
