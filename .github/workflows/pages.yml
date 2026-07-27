@@ -28,7 +28,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # enablement: true → リポジトリの Pages がまだ有効でなければ自動で有効化する
       - uses: actions/configure-pages@v5
+        with:
+          enablement: true
 
       - name: 公開用ファイルをまとめる
         run: |
