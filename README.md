@@ -40,10 +40,10 @@
 ## 公開する（GitHub Pages）
 
 1. GitHub のリポジトリで **Settings → Pages** を開く
-2. **Source** を `GitHub Actions` にする
-3. `main` にマージすると自動で公開されます
-   - マージ前に試したいときは **Actions タブ → Deploy to GitHub Pages → Run workflow** で、
-     このブランチを選んで手動実行してください
+2. **Source** を `GitHub Actions` にする（ここを設定しないと公開は失敗します）
+3. `main` または `claude/**` ブランチに push すると自動で公開されます
+   - それ以外のブランチを試したいときは **Actions タブ → Deploy to GitHub Pages → Run workflow** で、
+     ブランチを選んで手動実行してください
 
 公開先 URL:
 `https://<ユーザー名>.github.io/<リポジトリ名>/`

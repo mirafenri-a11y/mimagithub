@@ -1,11 +1,13 @@
 name: Deploy to GitHub Pages
 
-# main へのマージで自動公開。
-# それ以前に動作確認したいときは Actions タブから手動実行（Run workflow）で
+# 対象ブランチへの push で自動公開。
+# それ以外のブランチを試したいときは Actions タブから手動実行（Run workflow）で
 # 任意のブランチを公開できる。
 on:
   push:
-    branches: ["main"]
+    branches:
+      - main
+      - "claude/**"
   workflow_dispatch:
 
 permissions:
