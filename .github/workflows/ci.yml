@@ -16,13 +16,14 @@ jobs:
         with:
           node-version: "22"
 
-      - name: 診断ロジックのテスト
+      - name: ロジックのテスト（診断・バドミントン）
         run: npm test
 
       - name: 参照ファイルの存在チェック
         run: |
           set -e
-          for f in index.html assets/style.css assets/data.js assets/logic.js assets/app.js; do
+          for f in index.html assets/style.css assets/data.js assets/logic.js assets/app.js \
+                   badminton/index.html badminton/style.css badminton/lessons.js badminton/progress.js badminton/app.js; do
             test -f "$f" || { echo "missing: $f"; exit 1; }
           done
           echo "OK: すべての参照ファイルが存在します"

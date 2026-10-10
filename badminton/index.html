@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>バドミントン動画レッスン</title>
+<meta name="description" content="動画を見て、練習して、合格ラインにチェック。12ステップを1つずつ進めるバドミントンのレッスンです。">
+<meta property="og:title" content="バドミントン動画レッスン">
+<meta property="og:description" content="グリップからダブルスの動きまで、12ステップを1つずつ。">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#1d7a4f">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏸</text></svg>">
+</head>
+<body>
+
+<main class="wrap">
+
+  <header class="top">
+    <a href="#/" class="brand"><span aria-hidden="true">🏸</span> バドミントン動画レッスン</a>
+    <div class="meter" aria-hidden="true"><span id="meter-fill"></span></div>
+    <p class="meter-text"><span id="sum-done">0</span> / <span id="sum-total">12</span> ステップ完了</p>
+  </header>
+
+  <!-- ============ 一覧 ============ -->
+  <section id="screen-home" class="screen">
+    <p class="lead">
+      動画を見て、練習して、合格ラインにチェック。<br>
+      ぜんぶ埋まったら、次のステップが開きます。
+    </p>
+    <a id="btn-continue" class="btn btn-primary btn-lg" href="#/step/1">STEP 1 からはじめる</a>
+    <div id="chapters" class="chapters"></div>
+  </section>
+
+  <!-- ============ ステップ ============ -->
+  <section id="screen-step" class="screen" hidden>
+    <nav class="crumb">
+      <a href="#/" class="crumb-back">← 一覧</a>
+      <span id="s-pos" class="crumb-pos"></span>
+    </nav>
+
+    <p id="s-chapter" class="eyebrow"></p>
+    <h1 id="s-title" class="step-title"></h1>
+    <p id="s-goal" class="goal"></p>
+    <p id="s-cleared" class="cleared" hidden>✓ クリア済み</p>
+
+    <div class="player-card">
+      <div id="s-tabs" class="video-tabs" role="tablist" aria-label="動画の切り替え"></div>
+      <div class="player"><div id="player-slot" class="player-slot"></div></div>
+      <div id="player-tools" class="player-tools" hidden>
+        <span class="tools-label">速さ</span>
+        <button type="button" class="chip" data-rate="0.5">0.5倍</button>
+        <button type="button" class="chip" data-rate="0.75">0.75倍</button>
+        <button type="button" class="chip" data-rate="1">1倍</button>
+        <button type="button" id="btn-back5" class="chip chip-wide">↺ 5秒もどる</button>
+      </div>
+      <p class="video-meta">
+        <span id="s-video-title" class="video-title"></span>
+        <a id="s-video-link" class="video-link" target="_blank" rel="noopener">YouTubeで開く ↗</a>
+      </p>
+    </div>
+
+    <div class="panel">
+      <h2>見るポイント</h2>
+      <ol id="s-points" class="points"></ol>
+    </div>
+
+    <div class="panel">
+      <h2>練習メニュー</h2>
+      <p id="s-drill" class="plain"></p>
+    </div>
+
+    <div class="panel">
+      <h2>練習メモ</h2>
+      <textarea id="s-memo" rows="3" placeholder="気づいたこと、次に直したいこと"></textarea>
+      <p class="fineprint">メモとチェックはこの端末だけに保存されます。</p>
+    </div>
+
+    <div class="panel panel-check">
+      <h2>合格ライン</h2>
+      <p class="hint">練習してできたものにチェック。全部そろうと次へ進めます。</p>
+      <ul id="s-checks" class="checks"></ul>
+      <button type="button" id="btn-complete" class="btn btn-primary btn-lg" disabled>できた！次のステップへ</button>
+      <a id="btn-next-done" class="btn btn-primary btn-lg" hidden>次のステップへ →</a>
+      <button type="button" id="btn-reopen" class="btn btn-ghost" hidden>クリアを取り消す</button>
+    </div>
+
+    <nav class="pager">
+      <a id="s-prev" class="pager-link">← 前のステップ</a>
+      <a id="s-next" class="pager-link pager-next">次のステップ →</a>
+    </nav>
+  </section>
+
+  <!-- ============ 全部クリア ============ -->
+  <section id="screen-finish" class="screen" hidden>
+    <div class="finish">
+      <p class="finish-mark" aria-hidden="true">🏆</p>
+      <h1 class="step-title">全ステップ クリア！</h1>
+      <p class="lead">おつかれさまでした。ここからはゲームで使いながら、気になるステップを見返してください。</p>
+    </div>
+    <div id="finish-memos" class="panel" hidden>
+      <h2>あなたの練習メモ</h2>
+      <dl id="finish-memo-list" class="memo-list"></dl>
+    </div>
+    <a href="#/" class="btn btn-ghost">一覧へ戻る</a>
+  </section>
+
+  <footer class="foot">
+    <label class="toggle">
+      <input type="checkbox" id="opt-open-all">
+      すべてのステップを開く（コーチ・復習用）
+    </label>
+    <button type="button" id="btn-reset" class="linkish">記録をリセット</button>
+    <p class="fineprint">
+      動画は各YouTubeチャンネルの作品です。気に入ったら「YouTubeで開く」からチャンネルも応援してください。
+    </p>
+  </footer>
+</main>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<script src="lessons.js"></script>
+<script src="progress.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
